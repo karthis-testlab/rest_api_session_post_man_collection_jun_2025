@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "115f5323-2818-46ec-aed2-1ee1796581cc",
+		"name": "week6.day2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28447185",
+		"_collection_link": "https://testleaf-4289.postman.co/workspace/REST_API_Session_Jun_2025~c55ec55d-358e-4b2e-96dc-a16d8089d6de/collection/28447185-115f5323-2818-46ec-aed2-1ee1796581cc?action=share&source=collection_link&creator=28447185"
+	},
+	"item": [
+		{
+			"name": "Create-OAuth-Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonRes = pm.response.json()\r",
+							"pm.collectionVariables.set(\"access_token\", jsonRes.access_token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "86d5179e62322210f3ce6e390980b049",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "|Spd.,h;AU",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "qy/Q6A=vOM3x",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://dev209663.service-now.com/oauth_token.do",
+					"protocol": "https",
+					"host": [
+						"dev209663",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"oauth_token.do"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve_records_from_a_incident_table_response_as_xml",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://dev209663.service-now.com/api/now/table/:tableName",
+					"protocol": "https",
+					"host": [
+						"dev209663",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						":tableName"
+					],
+					"variable": [
+						{
+							"key": "tableName",
+							"value": "incident"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "access_token",
+			"value": ""
+		}
+	]
+}
