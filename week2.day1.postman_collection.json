@@ -4,7 +4,7 @@
 		"name": "week2.day1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "28447185",
-		"_collection_link": "https://testleaf-4289.postman.co/workspace/c55ec55d-358e-4b2e-96dc-a16d8089d6de/collection/28447185-0b11d218-c0a1-4d88-a220-e07861ad770b?action=share&source=collection_link&creator=28447185"
+		"_collection_link": "https://testleaf-4289.postman.co/workspace/REST_API_Session_Jun_2025~c55ec55d-358e-4b2e-96dc-a16d8089d6de/collection/28447185-0b11d218-c0a1-4d88-a220-e07861ad770b?action=share&source=collection_link&creator=28447185"
 	},
 	"item": [
 		{
@@ -418,7 +418,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{protocal}}://{{domainName}}.atlassian.net/rest/api/3/issuetype/project?projectId=10010",
+					"raw": "{{protocal}}://{{domainName}}.atlassian.net/rest/api/3/issuetype/project?projectId=10003",
 					"protocol": "{{protocal}}",
 					"host": [
 						"{{domainName}}",
@@ -435,7 +435,52 @@
 					"query": [
 						{
 							"key": "projectId",
-							"value": "10010"
+							"value": "10003"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-jira-user-details-by-email-address",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{API_TOKEN}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{userName}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocal}}://{{domainName}}.atlassian.net/rest/api/3/user/search?query=karthike.selene@gmail.com",
+					"protocol": "{{protocal}}",
+					"host": [
+						"{{domainName}}",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"api",
+						"3",
+						"user",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "karthike.selene@gmail.com"
 						}
 					]
 				}
